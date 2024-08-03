@@ -8,17 +8,17 @@ root_path = Path(__file__).parent.parent.parent.absolute()
 env = Env()
 env.read_env()
 
-# Телеграм токен бота
 token = env.str('BOT_TOKEN')
+# Телеграм токен бота
 
-# Путь до файла логирования
 LOGGING_FILE_PATH = 'app/data/logs.log'
+# Путь до файла логирования
 
-# Путь до файла базы данных
 DATABASE_PATH = 'app/data/sql.db'
+# Путь до файла базы данных
 
-# Имя пользователя, если он его отключил
 USER_NAME = 'Анонимный Пользователь'
+# Имя пользователя, если он его отключил
 
 
 
@@ -49,3 +49,7 @@ AUTODELETE_MESSAGE_INFO_DELAY = 3  # сек
 SHOW_MEDIA_FILE_ID = False
 # Выводить в консоль file_id фотографий и GIF анимаций. Может быть полезно для работы с START_MEDIA_FILE_ID
 # Лучше отключать, если не используете
+
+REPLIES_ENABLED = True
+# Включена ли возможность отвечать на сообщения пользователей
+# Может бить либо True, либо False

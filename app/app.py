@@ -23,6 +23,17 @@ async def main():
         );
         '''
     )
+    # Таблица с пользователями
+
+    await connection.execute(
+        '''CREATE TABLE IF NOT EXISTS messages(
+            id BIGINT NOT NULL,
+            message_id BIGINT NOT NULL,
+            unique_id BIGINT NOT NULL
+        );
+        '''
+    )
+    # Таблица с сообщениями (используется, для корректной работы реплаев)
 
     dp.include_routers(
         start_handler.router,
