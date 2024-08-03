@@ -19,7 +19,7 @@ python3 app.py
 
 ### Windows
 ```shell
-it clone https://github.com/tarxzf/echotoallbot
+git clone https://github.com/tarxzf/echotoallbot
 cd echotoallbot
 python -m venv env
 env\Scripts\activate
