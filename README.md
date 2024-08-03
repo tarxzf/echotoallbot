@@ -13,8 +13,6 @@ cd echotoallbot
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
-cd app
-python3 app.py
 ```
 
 ### Windows
@@ -24,7 +22,12 @@ cd echotoallbot
 python -m venv env
 env\Scripts\activate
 pip install -r requirements.txt
-cd app
+```
+
+Переименуйте .env.example в .env и вставьте телеграм токен
+
+## Запуск
+```shell
 python app.py
 ```
 
