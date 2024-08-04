@@ -3,12 +3,9 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from pathlib import Path
 
-from data.config import token, DATABASE_PATH, LOGGING_FILE_PATH
+from data.config import token, root_path, DATABASE_PATH, LOGGING_FILE_PATH
 from utils.database import Database
-
-root_path = Path(__file__).parent.parent.absolute()
 
 logger = logging.getLogger('main')
 logging.basicConfig(filename=root_path / LOGGING_FILE_PATH,
