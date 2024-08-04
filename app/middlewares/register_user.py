@@ -1,6 +1,6 @@
 from aiogram import BaseMiddleware
 from aiogram.types import Message
-from typing import Any, Awaitable, Callable
+from typing import Any, Awaitable, Callable, Optional, Tuple
 
 from loader import connection
 from utils.date import get_current_date
@@ -17,10 +17,10 @@ class RegisteringUserMiddleware(BaseMiddleware):
             user_id = message.from_user.id
 
             async with await connection.execute(
-                'SELECT id FROM users WHERE id = ?;',
+                'SELECT blocked FROM users WHERE id = ?;',
                 (user_id,)
             ) as cursor:
-                row = await cursor.fetchone()
+                row: Optional[Tuple[bool]] = await cursor.fetchone()
             
             if row is None:
                 date = await get_current_date()
@@ -29,10 +29,12 @@ class RegisteringUserMiddleware(BaseMiddleware):
                     (user_id, date)
                 )
             else:
-                await connection.execute(
-                    'UPDATE users SET blocked = false WHERE id = ?;',
-                    (user_id,)
-                )
+                user_blocked = row[1]
+                if user_blocked:
+                    await connection.execute(
+                        'UPDATE users SET blocked = false WHERE id = ?;',
+                        (user_id,)
+                    )
         
         result = await handler(message, data)
         return result
