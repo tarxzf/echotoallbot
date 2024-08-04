@@ -5,6 +5,7 @@ from data.types import StartMediaType
 
 root_path = Path(__file__).parent.parent.parent.absolute()
 
+
 env = Env()
 env.read_env()
 
