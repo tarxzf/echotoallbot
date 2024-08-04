@@ -11,10 +11,10 @@ env.read_env()
 token = env.str('BOT_TOKEN')
 # Телеграм токен бота
 
-LOGGING_FILE_PATH = 'app/data/logs.log'
+LOGGING_FILE_PATH = root_path / 'app/data/logs.log'
 # Путь до файла логирования
 
-DATABASE_PATH = 'app/data/sql.db'
+DATABASE_PATH = root_path / 'app/data/sql.db'
 # Путь до файла базы данных
 
 USER_NAME = 'Анонимный Пользователь'
