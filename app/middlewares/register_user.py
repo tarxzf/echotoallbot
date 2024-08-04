@@ -29,7 +29,7 @@ class RegisteringUserMiddleware(BaseMiddleware):
                     (user_id, date)
                 )
             else:
-                user_blocked = row[1]
+                user_blocked = row[0]
                 if user_blocked:
                     await connection.execute(
                         'UPDATE users SET blocked = false WHERE id = ?;',
