@@ -1,7 +1,7 @@
 from asyncio import run
 
 from loader import bot, dp, connection
-from handlers import start_handler, chat_handler
+from handlers import start_handler, chat_handler, tag_handler
 from middlewares.register_user import RegisteringUserMiddleware
 
 
@@ -19,7 +19,9 @@ async def main():
             id BIGINT PRIMARY KEY,
             name TEXT,
             registration_date TEXT NOT NULL,
-            blocked BOOLEAN DEFAULT false
+            blocked BOOLEAN DEFAULT false,
+            tag_enabled BOOLEAN DEFAULT false,
+            url_enabled BOOLEAN DEFAULT false
         );
         '''
     )
@@ -37,6 +39,7 @@ async def main():
 
     dp.include_routers(
         start_handler.router,
+        tag_handler.router,
         chat_handler.router
     )
     dp.message.middleware(RegisteringUserMiddleware())

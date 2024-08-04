@@ -25,8 +25,13 @@ class RegisteringUserMiddleware(BaseMiddleware):
             if row is None:
                 date = await get_current_date()
                 await connection.execute(
-                    'INSERT INTO users (id, registration_date) VALUES (?, ?);',
+                    'INSERT INTO users (id, registration_date, blocked) VALUES (?, ?, false);',
                     (user_id, date)
+                )
+            else:
+                await connection.execute(
+                    'UPDATE users SET blocked = false WHERE id = ?;',
+                    (user_id,)
                 )
         
         result = await handler(message, data)

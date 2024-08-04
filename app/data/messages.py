@@ -16,3 +16,21 @@ class Messages:
     message_received_info = (
         'Сообщение получило <i>{users_received}</i> чел.'
     )
+
+    tag_message_no_name = (
+        '❌ Ваш тег <b>выключен</b>!'
+        '\n  — Нажмите на кнопку ниже, чтобы включить его'
+    )
+
+    tag_message = (
+        '✅ Ваш тег <b>включен</b>!'
+        '\n  — Нажмите на кнопку ниже, чтобы выключить его'
+    )
+
+    user_name_no_url_callback_message = (
+        '❌ Пользователь не включил отображение URL'
+    )
+
+    cannot_switch_url_callback_message = (
+        '❌ Вы не можете включить отображение URL, так как у вас нет юзернейма'
+    )

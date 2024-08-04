@@ -53,3 +53,6 @@ SHOW_MEDIA_FILE_ID = False
 REPLIES_ENABLED = True
 # Включена ли возможность отвечать на сообщения пользователей
 # Может бить либо True, либо False
+
+TAG_COMMAND_ENABLED = True
+# Включена ли команда /tag для отображения имени

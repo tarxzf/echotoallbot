@@ -3,7 +3,6 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.types import FSInputFile
 from pathlib import Path
 
 from data.config import token, DATABASE_PATH, LOGGING_FILE_PATH
