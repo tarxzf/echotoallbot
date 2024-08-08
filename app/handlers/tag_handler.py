@@ -4,8 +4,10 @@ from aiogram.types import Message, CallbackQuery
 from typing import Tuple, Optional
 
 from data.messages import Messages
-from data.config import TAG_COMMAND_ENABLED
+from data.config import TAGS_COMMAND_ENABLED, TAG_BUTTON_TYPE
+from data.types import TagButtonType
 from filters.enable import IsEnabledFilter
+from filters.equals import Equals
 from keyboards.tag_keyboard import TagKeyboard
 from loader import connection
 
@@ -14,7 +16,8 @@ router = Router()
 
 @router.message(
     Command('tag'),
-    IsEnabledFilter(TAG_COMMAND_ENABLED)
+    IsEnabledFilter(TAGS_COMMAND_ENABLED),
+    Equals(TAG_BUTTON_TYPE, TagButtonType.TAG)
 )
 async def get_tag_command_handler(message: Message, *, user_id: Optional[int] = None, edit: bool = False):
     if user_id is None:

@@ -21,9 +21,9 @@ async def send_message(
         message: Message,
         bot: Bot,
         receiver_id: int,
+        reply_markup: InlineKeyboardMarkup,
         *,
-        reply_to: Optional[int] = None,
-        reply_markup: Optional[InlineKeyboardMarkup]
+        reply_to: Optional[int] = None
 ) -> MessageResponse:
     try:
         # Отправляем сообщение пользователю

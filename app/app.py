@@ -1,7 +1,7 @@
 from asyncio import run
 
 from loader import bot, dp, connection
-from handlers import start_handler, chat_handler, tag_handler
+from handlers import start_handler, chat_handler, tag_handler, name_handler
 from middlewares.register_user import RegisteringUserMiddleware
 
 
@@ -9,7 +9,6 @@ from middlewares.register_user import RegisteringUserMiddleware
 async def on_shutdown():
     await connection.close()
     print('Telegram-Bot has been closed')
-
 
 async def main():
     await connection.initialize()
@@ -40,6 +39,7 @@ async def main():
     dp.include_routers(
         start_handler.router,
         tag_handler.router,
+        name_handler.router,
         chat_handler.router
     )
     dp.message.middleware(RegisteringUserMiddleware())
